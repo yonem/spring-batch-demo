@@ -1,0 +1,12 @@
+[environments.default]
+url = "jdbc:mysql://localhost:3306/demo_batch"
+user = "yonem"
+password = "@yonem"
+
+[environments.test]
+url = "jdbc:mysql://localhost:3306/demo_batch_test"
+user = "yonem"
+password = "@yonem"
+
+[flyway]
+cleanDisabled = false
