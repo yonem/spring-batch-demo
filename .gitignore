@@ -1,6 +1,7 @@
 *.log
 HELP.md
 target/
+/vagrant/.vagrant*
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -13,3 +14,4 @@ target/
 
 ### VS Code ###
 .vscode/
+
