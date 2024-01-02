@@ -4,17 +4,17 @@ import com.google.gson.Gson;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.support.ListItemReader;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import java.util.Arrays;
 
-@Configuration
+//@Configuration
 public class SimpleStringOutputBatchConfig {
 
     @Bean
@@ -39,7 +39,8 @@ public class SimpleStringOutputBatchConfig {
 
     @Bean
     Job job(JobRepository repository, Step step1, Step step2) {
-        return new JobBuilder("job", repository)
+        return new JobBuilder("SimpleStringOutputBatchJob", repository)
+                .incrementer(new RunIdIncrementer())
                 .start(step1)
                 .next(step2)
                 .build();
