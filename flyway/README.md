@@ -66,13 +66,17 @@ flywayフォルダに移動する
 マイグレーションコマンドを実行する
 
 ```
-./flyway migrate
+./flyway migrate -locations=filesystem:sql/main migrate
+```
+
+```
+./flyway -environment=sub -locations=filesystem:sql/sub migrate
 ```
 
 テスト環境のマイグレーションコマンドを実行する
 
 ```
-./flyway -environment=test -locations=filesystem:sql/create migrate
+./flyway -environment=test -locations=filesystem:sql/main/create migrate
 ```
 
 テスト環境のバージョン確認コマンドを実行する
