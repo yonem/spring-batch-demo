@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.ne.yonem.common.mapper.WorkersMapper">
+    <select id="selectAll" resultType="jp.ne.yonem.common.entity.Worker">
+        SELECT id, name, is_valid isValid FROM m_workers
+    </select>
+
+    <insert id="bulkInsert">
+        INSERT INTO m_workers(name, is_valid, updated_at, created_at)VALUES
+
+        <foreach collection="workers" item="item" separator=",">
+            (#{item.name}, #{item.isValid}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+        </foreach>
+    </insert>
+</mapper>
