@@ -2,6 +2,7 @@ package jp.ne.yonem.batch.tasklet;
 
 import com.google.gson.Gson;
 import jp.ne.yonem.common.mapper.WorkersMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Slf4j
 public class MybatisTasklet {
 
     private final SqlSessionFactory mainSessionFactory;
@@ -37,7 +39,7 @@ public class MybatisTasklet {
             System.out.println(gson.toJson(list));
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            log.error(null, ex);
             mainSqlSession.rollback();
             subSqlSession.rollback();
         }
